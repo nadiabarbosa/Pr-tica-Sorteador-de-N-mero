@@ -3,12 +3,22 @@ function sortear() {
     let de = parseInt(document.getElementById('de').value);
     let ate = parseInt(document.getElementById('ate').value);
 
+    if (de >= ate) {
+        alert ('O valor inserido no campo "Do número" deve ser inferior ao valor inserido no campo "Até o número". Verifique!');
+        return;
+    };
+    
+    if (quantidade > (ate - de + 1)) {
+        document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">A quantidade de números sorteados deve ser inferior ou igual a diferença entre o número inicial e final. </label>';
+        return;
+    }
+
     let sorteados = [];
     let numero;
 
     for (let i = 0; i < quantidade; i++) {
         numero = gerarNumeroAleatorio(de, ate); 
-
+        
         while (sorteados.includes(numero)){
             numero = gerarNumeroAleatorio(de, ate);
         } 
